@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GripFit Landing Page</title>
+  <meta name="description" content="GripFit kitchen trash bags are designed to actually fit regular 13-gallon kitchen cans, stretch over the rim, and stay put." />
+  <meta property="og:title" content="GripFit — Trash bags that actually fit your kitchen can" />
+  <meta property="og:description" content="A landing page draft for GripFit, a better-fitting 13-gallon kitchen trash bag concept." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem;
+      --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem;
+      --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg: #f7f6f2;
+      --color-surface: #fbfbf9;
+      --color-surface-2: #f3f0ec;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6b63;
+      --color-text-faint: #9d988f;
+      --color-primary: #235a46;
+      --color-primary-hover: #194334;
+      --color-primary-highlight: #d9e6de;
+      --color-text-inverse: #f8f7f4;
+      --radius-sm: 0.375rem; --radius-md: 0.5rem; --radius-lg: 0.875rem; --radius-xl: 1.25rem; --radius-full: 9999px;
+      --shadow-sm: 0 1px 2px rgba(20,20,20,.06);
+      --shadow-md: 0 8px 24px rgba(20,20,20,.08);
+      --shadow-lg: 0 18px 40px rgba(20,20,20,.12);
+      --font-body: 'General Sans', system-ui, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --content-default: 1120px;
+      --transition-interactive: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1d1c1a;
+      --color-surface-2: #252320;
+      --color-border: #3a3732;
+      --color-divider: #2e2b27;
+      --color-text: #e4e0d9;
+      --color-text-muted: #b1aba2;
+      --color-text-faint: #80796f;
+      --color-primary: #7db79b;
+      --color-primary-hover: #97c9af;
+      --color-primary-highlight: #233228;
+      --color-text-inverse: #171614;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.25);
+      --shadow-md: 0 8px 24px rgba(0,0,0,.3);
+      --shadow-lg: 0 18px 40px rgba(0,0,0,.4);
+    }
+
+    * , *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(calc(100% - 2rem), var(--content-default)); margin: 0 auto; }
+    .skip-link {
+      position: absolute; left: -999px; top: 0;
+      background: var(--color-primary); color: var(--color-text-inverse);
+      padding: var(--space-3) var(--space-4); border-radius: var(--radius-md);
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; z-index: 100; }
+
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in oklab, var(--color-bg) 86%, transparent);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: var(--space-4); padding: var(--space-4) 0;
+    }
+    .brand {
+      display: inline-flex; align-items: center; gap: var(--space-3); font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .brand-mark {
+      width: 2rem; height: 2rem; border-radius: 0.7rem;
+      background: linear-gradient(135deg, var(--color-primary), color-mix(in oklab, var(--color-primary) 70%, black));
+      display: grid; place-items: center; color: var(--color-text-inverse);
+      box-shadow: var(--shadow-sm);
+      flex: none;
+    }
+    .nav-actions { display: flex; align-items: center; gap: var(--space-3); }
+    .theme-toggle, .ghost-btn, .primary-btn {
+      min-height: 44px; min-width: 44px;
+      border-radius: var(--radius-full); border: 1px solid transparent;
+      transition: transform var(--transition-interactive), background var(--transition-interactive), border-color var(--transition-interactive), color var(--transition-interactive);
+      cursor: pointer;
+    }
+    .theme-toggle {
+      display: inline-grid; place-items: center; width: 44px;
+      background: var(--color-surface); color: var(--color-text);
+      border-color: color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+    .theme-toggle:hover, .ghost-btn:hover, .primary-btn:hover { transform: translateY(-1px); }
+    .ghost-btn {
+      padding: 0 var(--space-5); background: var(--color-surface);
+      border-color: color-mix(in oklab, var(--color-text) 10%, transparent);
+      color: var(--color-text); display: inline-flex; align-items: center; justify-content: center;
+      font-size: var(--text-sm); font-weight: 600;
+    }
+    .primary-btn {
+      padding: 0 var(--space-5); background: var(--color-primary); color: var(--color-text-inverse);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: var(--text-sm); font-weight: 600; box-shadow: var(--shadow-sm);
+    }
+    .primary-btn:hover { background: var(--color-primary-hover); }
+
+    .hero { padding: clamp(var(--space-12), 10vw, var(--space-24)) 0 var(--space-16); }
+    .hero-grid {
+      display: grid; gap: var(--space-8);
+      grid-template-columns: 1.15fr 0.95fr;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: var(--space-2);
+      padding: 0.45rem 0.8rem; border-radius: var(--radius-full);
+      background: var(--color-primary-highlight); color: var(--color-primary);
+      font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: var(--space-5);
+    }
+    h1, h2, h3 { margin: 0; letter-spacing: -0.04em; }
+    h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      line-height: 0.95;
+      max-width: 12ch;
+      margin-bottom: var(--space-5);
+    }
+    .hero-copy {
+      font-size: var(--text-lg); color: var(--color-text-muted); max-width: 34rem;
+      margin-bottom: var(--space-6);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-bottom: var(--space-6); }
+    .social-proof {
+      display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-6);
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .hero-card {
+      background: var(--color-surface); border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl); padding: var(--space-6); box-shadow: var(--shadow-lg);
+    }
+    .can-demo {
+      background: linear-gradient(180deg, color-mix(in oklab, var(--color-surface-2) 80%, white 20%), var(--color-surface-2));
+      border: 1px solid color-mix(in oklab, var(--color-text) 8%, transparent);
+      border-radius: 1.5rem;
+      padding: var(--space-6);
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      display: grid;
+      align-content: space-between;
+      gap: var(--space-6);
+    }
+    .can-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); align-items: end; }
+    .mini-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-faint); margin-bottom: var(--space-3); }
+    .trash-can {
+      position: relative; border-radius: 1.25rem 1.25rem 0.9rem 0.9rem;
+      background: color-mix(in oklab, var(--color-text) 8%, var(--color-surface));
+      height: 220px; border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      overflow: visible;
+    }
+    .trash-can::before {
+      content: ""; position: absolute; top: -14px; left: 8%; width: 84%; height: 24px;
+      border-radius: 999px; background: color-mix(in oklab, var(--color-text) 14%, var(--color-surface));
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+    .bag.bad, .bag.good {
+      position: absolute; left: 10%; width: 80%; border-radius: 0.9rem 0.9rem 0.55rem 0.55rem;
+      transition: all 180ms ease;
+    }
+    .bag.bad {
+      top: 16px; height: 162px; background: rgba(130,130,130,.25); border: 2px dashed rgba(110,110,110,.4);
+    }
+    .bag.bad::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -28px; margin: auto; width: 88%; height: 56px;
+      background: rgba(130,130,130,.2); border-radius: 0 0 1rem 1rem;
+    }
+    .bag.good {
+      top: 4px; height: 190px; background: color-mix(in oklab, var(--color-primary) 18%, white);
+      border: 2px solid color-mix(in oklab, var(--color-primary) 30%, white);
+      box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--color-primary) 10%, transparent);
+    }
+    .bag.good::before {
+      content: ""; position: absolute; top: -8px; left: -4%; width: 108%; height: 18px;
+      border-radius: 999px; background: color-mix(in oklab, var(--color-primary) 70%, white);
+      box-shadow: 0 0 0 2px color-mix(in oklab, var(--color-primary) 25%, transparent);
+    }
+    .demo-note {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);
+    }
+    .demo-chip {
+      border-radius: var(--radius-lg); padding: var(--space-4);
+      background: color-mix(in oklab, var(--color-surface) 85%, var(--color-bg));
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+    .demo-chip strong { display: block; font-size: var(--text-sm); margin-bottom: 0.25rem; }
+    .demo-chip span { color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .section { padding: var(--space-16) 0; }
+    .section-head { max-width: 42rem; margin-bottom: var(--space-8); }
+    .section-head h2 { font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-3); }
+    .section-head p { color: var(--color-text-muted); }
+
+    .problem-grid, .features-grid, .proof-grid {
+      display: grid; gap: var(--space-5);
+    }
+    .problem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-grid { grid-template-columns: 1.2fr 0.8fr; align-items: stretch; }
+
+    .card {
+      background: var(--color-surface); border-radius: var(--radius-xl); padding: var(--space-6);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+      box-shadow: var(--shadow-sm);
+    }
+    .card h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); letter-spacing: -0.03em; }
+    .card p { color: var(--color-text-muted); }
+    .stat {
+      display: flex; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-3);
+    }
+    .stat strong {
+      font-size: clamp(2rem, 1.3rem + 2.4vw, 3.5rem); line-height: 1; font-family: var(--font-display);
+    }
+    .stat span { color: var(--color-text-muted); font-size: var(--text-sm); }
+    .feature-num {
+      width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center;
+      margin-bottom: var(--space-4); font-size: var(--text-xs); font-weight: 700;
+      background: var(--color-primary-highlight); color: var(--color-primary);
+    }
+
+    .waitlist {
+      display: grid; grid-template-columns: 1fr auto; gap: var(--space-3); margin-top: var(--space-6);
+      background: var(--color-surface); padding: var(--space-4); border-radius: var(--radius-xl);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent); box-shadow: var(--shadow-md);
+    }
+    .waitlist input {
+      width: 100%; min-height: 52px; border-radius: var(--radius-lg); border: 1px solid var(--color-border);
+      background: var(--color-bg); color: var(--color-text); padding: 0 var(--space-4);
+    }
+    .waitlist input::placeholder { color: var(--color-text-faint); }
+    .waitlist input:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    .microcopy { margin-top: var(--space-3); color: var(--color-text-muted); font-size: var(--text-sm); }
+
+    .faq-list { display: grid; gap: var(--space-4); }
+    details {
+      background: var(--color-surface); border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6);
+      border: 1px solid color-mix(in oklab, var(--color-text) 10%, transparent);
+    }
+    summary { cursor: pointer; font-weight: 600; }
+    details p { color: var(--color-text-muted); margin-top: var(--space-3); }
+
+    footer {
+      padding: var(--space-8) 0 var(--space-10);
+      color: var(--color-text-muted); font-size: var(--text-sm);
+    }
+    .footer-row {
+      display: flex; justify-content: space-between; gap: var(--space-4); align-items: center;
+      border-top: 1px solid var(--color-divider); padding-top: var(--space-6);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid, .proof-grid, .problem-grid, .features-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: var(--space-10); }
+      .can-row, .demo-note { grid-template-columns: 1fr; }
+      h1 { max-width: 13ch; }
+    }
+
+    @media (max-width: 640px) {
+      .nav { align-items: flex-start; }
+      .nav-actions { flex-wrap: wrap; justify-content: flex-end; }
+      .waitlist { grid-template-columns: 1fr; }
+      .footer-row { flex-direction: column; align-items: flex-start; }
+      .hero-copy { font-size: var(--text-base); }
+      .can-demo { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="GripFit home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M5 8h14"/>
+            <path d="M7 8v8a3 3 0 0 0 3 3h4a3 3 0 0 0 3-3V8"/>
+            <path d="M9 5.5C9 4.67 9.67 4 10.5 4h3C14.33 4 15 4.67 15 5.5V8H9V5.5Z"/>
+          </svg>
+        </span>
+        <span>GripFit</span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <a class="ghost-btn" href="#problem">Why it matters</a>
+        <a class="primary-btn" href="#waitlist">Join waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Designed for regular kitchen cans</div>
+          <h1>Trash bags that actually fit your 13-gallon kitchen can.</h1>
+          <p class="hero-copy">GripFit is a better kitchen trash bag concept: easier to stretch over the rim, less likely to tear, and built to stay put instead of sliding into the can when you toss in something heavy.</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#waitlist">Reserve your launch spot</a>
+            <a class="ghost-btn" href="#demo">See the difference</a>
+          </div>
+          <div class="social-proof" aria-label="Key value points">
+            <span>Fits real 13-gallon cans</span>
+            <span>Stretch-over-rim top edge</span>
+            <span>No more slip-inside mess</span>
+          </div>
+        </div>
+
+        <div class="hero-card" id="demo">
+          <div class="can-demo" aria-label="Illustration showing regular bag versus GripFit bag on a kitchen trash can">
+            <div>
+              <div class="mini-label">What usually happens</div>
+              <div class="can-row">
+                <div>
+                  <div class="trash-can" aria-hidden="true">
+                    <div class="bag bad"></div>
+                  </div>
+                  <p class="microcopy">Regular bag: too short, too tight, slips down.</p>
+                </div>
+                <div>
+                  <div class="trash-can" aria-hidden="true">
+                    <div class="bag good"></div>
+                  </div>
+                  <p class="microcopy">GripFit: stretches over the rim and stays there.</p>
+                </div>
+              </div>
+            </div>
+            <div class="demo-note">
+              <div class="demo-chip">
+                <strong>Made for the common kitchen can</strong>
+                <span>Start with the regular 13-gallon can most households already use.</span>
+              </div>
+              <div class="demo-chip">
+                <strong>The benefit is obvious</strong>
+                <span>People can understand the product in one glance and one sentence.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problem">
+      <div class="container">
+        <div class="section-head">
+          <h2>The current problem is boring — and constant.</h2>
+          <p>Kitchen trash bags are one of those products people buy forever without expecting them to improve. But the same complaints repeat every week in ordinary kitchens.</p>
+        </div>
+        <div class="problem-grid">
+          <article class="card">
+            <div class="stat"><strong>Too short</strong><span>They drop low in the can and stop reaching the rim.</span></div>
+            <p>You end up wrestling the bag over the top or buying a larger size than you really need.</p>
+          </article>
+          <article class="card">
+            <div class="stat"><strong>Too tight</strong><span>Stretching them into place can rip seams or corners.</span></div>
+            <p>The bag feels like it barely fits even though the box says it is the right size for your kitchen can.</p>
+          </article>
+          <article class="card">
+            <div class="stat"><strong>Too slippery</strong><span>As soon as weight goes in, the liner can slide into the can.</span></div>
+            <p>That creates the annoying “trash under the bag” mess almost everyone recognizes instantly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What GripFit would do differently</h2>
+          <p>This is not a reinvention of waste management. It is a simple improvement to an old household product people already understand and already buy.</p>
+        </div>
+        <div class="features-grid">
+          <article class="card">
+            <div class="feature-num">01</div>
+            <h3>Fit for real kitchen cans</h3>
+            <p>Built around the regular kitchen can first, with dimensions chosen to work in ordinary household use rather than just matching a gallon label.</p>
+          </article>
+          <article class="card">
+            <div class="feature-num">02</div>
+            <h3>Stretch and grip at the rim</h3>
+            <p>A reinforced, slightly elastic top edge is the core promise: easier to get on, more likely to stay on.</p>
+          </article>
+          <article class="card">
+            <div class="feature-num">03</div>
+            <h3>Premium because it solves something</h3>
+            <p>The pitch is not fragrance, color, or gimmicks. The pitch is simple: this bag actually behaves better in your kitchen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container proof-grid">
+        <div class="card">
+          <div class="section-head" style="margin-bottom:1.25rem;">
+            <h2 style="margin-bottom:.6rem;">Simple concept. Clear consumer test.</h2>
+            <p>You can validate this idea before manufacturing by measuring whether people want a better-fitting kitchen bag badly enough to join a waitlist or reserve a first box.</p>
+          </div>
+          <ul style="padding-left:1rem; color:var(--color-text-muted); margin:0; display:grid; gap:.8rem;">
+            <li>Show the problem visually: regular bag slipping into the can.</li>
+            <li>Explain the benefit in one sentence: fits, stretches, stays put.</li>
+            <li>Ask for a waitlist signup or soft preorder on a 40-bag launch pack.</li>
+          </ul>
+        </div>
+        <aside class="card">
+          <div class="mini-label">Early pricing thought</div>
+          <h3 style="margin-bottom:.5rem;">Launch as a premium everyday upgrade</h3>
+          <p>Position GripFit around the same aisle and use case as Hefty-level kitchen bags, but with a clearer functional benefit: fit instead of scent or vague strength claims.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="waitlist">
+      <div class="container">
+        <div class="card" style="padding:clamp(1.5rem,4vw,3rem);">
+          <div class="section-head" style="margin-bottom:0; max-width:44rem;">
+            <h2>Reserve your launch spot</h2>
+            <p>We’re exploring a first run of GripFit for regular 13-gallon kitchen cans. Join the early list to hear when testing opens and help shape the first version.</p>
+          </div>
+          <form class="waitlist" onsubmit="event.preventDefault(); document.getElementById('success-note').hidden = false; this.reset();">
+            <label class="sr-only" for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="Enter your email for early access" required />
+            <button class="primary-btn" type="submit">Join the waitlist</button>
+          </form>
+          <p id="success-note" class="microcopy" hidden>Thanks — you’re on the early list for GripFit updates.</p>
+          <p class="microcopy">No spam. Just launch updates, fit testing, and first access to the first kitchen-can pack.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Questions people will ask</h2>
+          <p>This page is meant to test whether the idea is compelling before manufacturing, so the most important thing is clarity.</p>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Is this just a drawstring bag?</summary>
+            <p>No — the core idea is a bag designed to fit and hold on to a regular kitchen can better, especially at the rim where the slipping problem starts.</p>
+          </details>
+          <details>
+            <summary>Why would someone switch from a big brand?</summary>
+            <p>Because the promise is more specific and more practical: not just “strong,” but “actually fits and stays put on my kitchen can.”</p>
+          </details>
+          <details>
+            <summary>Why start with regular kitchen cans?</summary>
+            <p>Because the category is common, easy to explain, and used constantly. That makes the problem broad and the buying behavior already familiar.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>GripFit concept landing page</div>
+      <div>Built to test demand before inventory</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('[data-theme-toggle]');
+      const root = document.documentElement;
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      const renderIcon = () => {
+        toggle.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+      };
+
+      renderIcon();
+      toggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        renderIcon();
+      });
+    })();
+  </script>
+</body>
+</html>
